@@ -1,15 +1,32 @@
 package com.cursospring.practicasuno.controllers;
 
-import org.springframework.stereotype.Controller;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+import models.UserModel;
 
-@Controller
+//utilizando la annotation @Controller se puede devolver json de igual forma, 
+//si al método se le agrega @ResponseBody
+@RestController
+@RequestMapping("/user")
 public class UserController {
 
     @GetMapping("/profile")
-    public String getProfile() {
-        return "profile";
+    public Map<String, Object> getProfile() {
+        Map<String,Object> map = new HashMap<>();
+        UserModel user = new UserModel(1234,
+        "Nadia",
+        "Bergara",
+        "nadia.bergara");
+
+        map.put("object1", "primer object");
+        map.put("user", user);
+
+        return map;
     }
     
 }
