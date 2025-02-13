@@ -18,10 +18,7 @@ public class UserController {
     @GetMapping("/profile")
     public Map<String, Object> getProfile() {
         Map<String,Object> map = new HashMap<>();
-        UserModel user = new UserModel(1234,
-        "Nadia",
-        "Bergara",
-        "nadia.bergara");
+        UserModel user = new UserModel();
 
         map.put("object1", "primer object");
         map.put("user", user);

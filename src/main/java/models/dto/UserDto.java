@@ -1,10 +1,13 @@
 package models.dto;
 
+import java.util.Date;
+
 public class UserDto {
-    
+
     private String name;
     private String lastname;
     private String[] pronouns;
+    private Date birthDate;
 
     public UserDto(){
 
@@ -13,11 +16,13 @@ public class UserDto {
     public UserDto(
         String name,
         String lastname,
-        String[] pronouns
+        String[] pronouns,
+        Date birthDate
     ){
         this.lastname = lastname;
         this.name = name;
         this.pronouns = pronouns;
+        this.birthDate = birthDate;
     }
 
     public String getName() {
@@ -37,5 +42,13 @@ public class UserDto {
     }
     public void setPronouns(String[] pronouns) {
         this.pronouns = pronouns;
+    }
+    public void setBirthDate(Date birthDate){
+        this.birthDate = birthDate;
+    }
+    public int getDaysUntilBirthday(){
+        
+        
+        return 1;
     }
 }
