@@ -1,23 +1,31 @@
 package models.dto;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+
+import models.UserModel;
 
 public class UserDto {
 
     private String name;
     private String lastname;
     private String[] pronouns;
-    private Date birthDate;
+    private LocalDate birthDate;
 
-    public UserDto(){
+    public UserDto(){}
 
+    public UserDto(UserModel user){
+        this.name = user.getName();
+        this.lastname = user.getLastname();
+        this.pronouns = user.getPronouns();
+        this.birthDate = user.getBirthDate();
     }
 
     public UserDto(
         String name,
         String lastname,
         String[] pronouns,
-        Date birthDate
+        LocalDate birthDate
     ){
         this.lastname = lastname;
         this.name = name;
@@ -43,12 +51,18 @@ public class UserDto {
     public void setPronouns(String[] pronouns) {
         this.pronouns = pronouns;
     }
-    public void setBirthDate(Date birthDate){
+    public void setBirthDate(LocalDate birthDate){
         this.birthDate = birthDate;
     }
     public int getDaysUntilBirthday(){
-        
-        
-        return 1;
+
+        int birthdayThisYear = this.birthDate.getDayOfYear() - LocalDate.now().getDayOfYear();
+
+        int birthdayNextYear = (int)ChronoUnit.DAYS.between(
+            LocalDate.now(), 
+            this.birthDate.plusYears(1));
+
+        return this.birthDate.getDayOfYear() > LocalDate.now().getDayOfYear() ?
+        birthdayThisYear : birthdayNextYear;
     }
 }

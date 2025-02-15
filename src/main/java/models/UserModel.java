@@ -1,6 +1,6 @@
 package models;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class UserModel {
     private long id;
@@ -8,8 +8,8 @@ public class UserModel {
     private String lastname;
     private String username;
     private String[] pronouns;
-    private Date userCreationDate;
-    private Date birthDate;
+    private LocalDate userCreationDate;
+    private LocalDate birthDate;
 
     public UserModel(){}
 
@@ -18,8 +18,8 @@ public class UserModel {
                         String lastname,
                         String username,
                         String[] pronouns,
-                        Date userCreationDate,
-                        Date birthDate){
+                        LocalDate userCreationDate,
+                        LocalDate birthDate){
         this.id = id;
         this.name = name;
         this.lastname = lastname;
@@ -56,16 +56,16 @@ public class UserModel {
     public String[] getPronouns(){
         return this.pronouns;
     }
-    public void setUserCreationDate(Date userCreationDate){
+    public void setUserCreationDate(LocalDate userCreationDate){
         this.userCreationDate = userCreationDate;
     }
-    public Date getUserCreationDate(){
+    public LocalDate getUserCreationDate(){
         return this.userCreationDate;
     }
-    public void setBirthDate(Date birthDate){
+    public void setBirthDate(LocalDate birthDate){
         this.birthDate = birthDate;
     }
-    public Date getBirthDate(){
+    public LocalDate getBirthDate(){
         return this.birthDate;
     }
 }
